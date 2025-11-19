@@ -1,0 +1,1 @@
+Open dashboard/index.html and Refresh

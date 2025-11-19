@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Observify Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body{font-family:system-ui,Arial;margin:16px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .card{background:#fff;padding:12px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+    pre{white-space:pre-wrap;word-break:break-word}
+  </style>
+</head>
+<body>
+  <h1>Observify Dashboard</h1>
+  <div><button id="refresh">Refresh</button> <span id="stats"></span></div>
+  <div class="grid" style="margin-top:12px">
+    <div class="card">
+      <h3>Recent Errors</h3>
+      <pre id="errors">loading…</pre>
+    </div>
+    <div class="card">
+      <h3>Recent Performance / Network</h3>
+      <canvas id="perfChart" height="150"></canvas>
+    </div>
+  </div>
+  <script>
+    async function fetchJSON(path){ const r = await fetch('http://localhost:4000'+path); return r.ok ? r.json() : []; }
+    async function refresh(){
+      const errs = await fetchJSON('/errors');
+      const perf = await fetchJSON('/metrics');
+      document.getElementById('errors').textContent = errs.length ? errs.map(e=>`[${new Date(e.ts).toLocaleTimeString()}] ${e.type} ${e.message||e.url||''}`).join("\n\n") : 'No errors';
+      document.getElementById('stats').textContent = `Errors: ${errs.length}  |  Metrics: ${perf.length}`;
+      // perf chart
+      const labels = perf.slice(0,50).reverse().map((p,i)=> new Date(p.ts).toLocaleTimeString());
+      const values = perf.slice(0,50).reverse().map(p=> p.loadTime || p.duration || p.value || 0);
+      renderChart(labels, values);
+    }
+    let chart=null;
+    function renderChart(labels, values){
+      const ctx = document.getElementById('perfChart').getContext('2d');
+      if(chart) chart.destroy();
+      chart = new Chart(ctx, { type: 'line', data: { labels, datasets: [{ label: 'ms', data: values, fill:false }] }, options: {} });
+    }
+    document.getElementById('refresh').onclick = refresh;
+    refresh();
+    setInterval(refresh, 5000);
+  </script>
+</body>
+</html>

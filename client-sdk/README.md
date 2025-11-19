@@ -1,0 +1,1 @@
+Serve client-sdk via a static server and open test.html

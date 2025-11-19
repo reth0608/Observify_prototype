@@ -1,0 +1,121 @@
+{
+  "events": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "type": "smoke",
+      "message": "manual ping",
+      "ts": 1763315811548
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "ts": 1763316275454,
+      "type": "error",
+      "message": "direct manual test"
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316275873
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316306300
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316312308
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316318305
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316321305
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316335878
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316347886
+    },
+    {
+      "ts": 1763316498821,
+      "type": "error",
+      "message": "direct manual test"
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316500881
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763316666307
+    },
+    {
+      "ts": 1763319733558,
+      "type": "error",
+      "message": "direct manual test"
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763319734889
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763319738313
+    },
+    {
+      "ts": 1763319920029,
+      "type": "error",
+      "message": "direct manual test"
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763319920886
+    },
+    {
+      "type": "unknown",
+      "note": "empty-event",
+      "originalIndex": 0,
+      "ts": 1763319930300
+    }
+  ]
+}
