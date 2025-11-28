@@ -1,10 +1,19 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <title>Observify SDK Test</title>
-  <style>body{font-family:system-ui,Arial;padding:16px}</style>
+  <!-- Bug #6 Fix: Add favicon to prevent 404 error -->
+  <link rel="icon" href="data:,">
+  <style>
+    body {
+      font-family: system-ui, Arial;
+      padding: 16px
+    }
+  </style>
 </head>
+
 <body>
   <h1>Observify SDK Test</h1>
   <p>Open DevTools Console & Network. The page will auto-generate events.</p>
@@ -17,35 +26,36 @@
     tracker.start();
     console.log('Tracker started', tracker);
     // explicit manual queue for debugging
-document.getElementById('err').onclick = () => {
-  tracker.queue({
-    type: 'error',
-    message: 'Manual queued error',
-    url: location.href,
-    ts: Date.now()
-  });
-  console.log('Queued manual error object (no uncaught throw).');
-};
+    document.getElementById('err').onclick = () => {
+      tracker.queue({
+        type: 'error',
+        message: 'Manual queued error',
+        url: location.href,
+        ts: Date.now()
+      });
+      console.log('Queued manual error object (no uncaught throw).');
+    };
 
-document.getElementById('rej').onclick = () => {
-  tracker.queue({
-    type: 'rejection',
-    message: 'Manual queued rejection',
-    ts: Date.now()
-  });
-  console.log('Queued manual rejection object');
-};
+    document.getElementById('rej').onclick = () => {
+      tracker.queue({
+        type: 'rejection',
+        message: 'Manual queued rejection',
+        ts: Date.now()
+      });
+      console.log('Queued manual rejection object');
+    };
 
-    document.getElementById('net').onclick = ()=> fetch('https://jsonplaceholder.typicode.com/todos/1').then(r=>r.json()).then(console.log).catch(console.error);
+    document.getElementById('net').onclick = () => fetch('https://jsonplaceholder.typicode.com/todos/1').then(r => r.json()).then(console.log).catch(console.error);
     // auto events
-    setTimeout(()=> { throw new Error('Auto test error after 2s'); }, 2000);
-    setTimeout(()=> Promise.reject('Auto rejection after 3s'), 3000);
-    setTimeout(()=> fetch('https://jsonplaceholder.typicode.com/todos/1').then(r=>r.json()).then(d=>console.log('fetched',d)), 2500);
-  // temporary: show buffer contents every 2s to debug
-setInterval(() => {
-  console.log('Tracker buffer snapshot:', tracker.buffer.slice());
-}, 2000);
+    setTimeout(() => { throw new Error('Auto test error after 2s'); }, 2000);
+    setTimeout(() => Promise.reject('Auto rejection after 3s'), 3000);
+    setTimeout(() => fetch('https://jsonplaceholder.typicode.com/todos/1').then(r => r.json()).then(d => console.log('fetched', d)), 2500);
+    // temporary: show buffer contents every 2s to debug
+    setInterval(() => {
+      console.log('Tracker buffer snapshot:', tracker.buffer.slice());
+    }, 2000);
 
   </script>
 </body>
+
 </html>

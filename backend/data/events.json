@@ -1,121 +1,241 @@
 {
   "events": [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "type": "smoke",
-      "message": "manual ping",
-      "ts": 1763315811548
+      "ts": 1764327961414,
+      "type": "init",
+      "url": "http://127.0.0.1:5500/test.html",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      "sessionId": "dz9mqo9"
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
     {
-      "ts": 1763316275454,
+      "ts": 1764327961419,
+      "type": "performance",
+      "loadTime": 0,
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "dz9mqo9"
+    },
+    {
+      "ts": 1764327963418,
       "type": "error",
-      "message": "direct manual test"
+      "message": "Uncaught Error: Auto test error after 2s",
+      "filename": "http://127.0.0.1:5500/test.html",
+      "lineno": 41,
+      "colno": 29,
+      "stack": "Error: Auto test error after 2s\n    at http://127.0.0.1:5500/test.html:41:29",
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "dz9mqo9"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316275873
+      "ts": 1764327964428,
+      "type": "rejection",
+      "message": "Auto rejection after 3s",
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "dz9mqo9"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316306300
+      "ts": 1764327964492,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 572,
+      "sessionId": "dz9mqo9"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316312308
-    },
-    {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316318305
-    },
-    {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316321305
-    },
-    {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316335878
-    },
-    {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316347886
-    },
-    {
-      "ts": 1763316498821,
+      "ts": 1764327998796,
       "type": "error",
-      "message": "direct manual test"
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316500881
+      "ts": 1764328014233,
+      "type": "rejection",
+      "message": "Manual queued rejection"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763316666307
+      "ts": 1764328028730,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 803,
+      "sessionId": "dz9mqo9"
     },
     {
-      "ts": 1763319733558,
+      "ts": 1764330096154,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 673,
+      "sessionId": "dz9mqo9"
+    },
+    {
+      "ts": 1764330096522,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 490,
+      "sessionId": "dz9mqo9"
+    },
+    {
+      "ts": 1764330096976,
+      "type": "rejection",
+      "message": "Manual queued rejection"
+    },
+    {
+      "ts": 1764330101113,
       "type": "error",
-      "message": "direct manual test"
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763319734889
-    },
-    {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763319738313
-    },
-    {
-      "ts": 1763319920029,
+      "ts": 1764332288147,
       "type": "error",
-      "message": "direct manual test"
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763319920886
+      "ts": 1764332288589,
+      "type": "error",
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
     },
     {
-      "type": "unknown",
-      "note": "empty-event",
-      "originalIndex": 0,
-      "ts": 1763319930300
+      "ts": 1764332288737,
+      "type": "error",
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
+    },
+    {
+      "ts": 1764332288959,
+      "type": "error",
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
+    },
+    {
+      "ts": 1764332292612,
+      "type": "rejection",
+      "message": "Manual queued rejection"
+    },
+    {
+      "ts": 1764332296566,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 906,
+      "sessionId": "dz9mqo9"
+    },
+    {
+      "ts": 1764332310106,
+      "type": "error",
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
+    },
+    {
+      "ts": 1764332314823,
+      "type": "error",
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
+    },
+    {
+      "ts": 1764332321749,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 252,
+      "sessionId": "dz9mqo9"
+    },
+    {
+      "ts": 1764334970671,
+      "type": "init",
+      "url": "http://127.0.0.1:5500/test.html",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      "sessionId": "ri9h9i2"
+    },
+    {
+      "ts": 1764334970677,
+      "type": "performance",
+      "loadTime": 0,
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "ri9h9i2"
+    },
+    {
+      "ts": 1764334972766,
+      "type": "error",
+      "message": "Uncaught Error: Auto test error after 2s",
+      "filename": "http://127.0.0.1:5500/test.html",
+      "lineno": 50,
+      "colno": 30,
+      "stack": "Error: Auto test error after 2s\n    at http://127.0.0.1:5500/test.html:50:30",
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "ri9h9i2"
+    },
+    {
+      "ts": 1764334973678,
+      "type": "rejection",
+      "message": "Auto rejection after 3s",
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "ri9h9i2"
+    },
+    {
+      "ts": 1764334973997,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 819,
+      "sessionId": "ri9h9i2"
+    },
+    {
+      "ts": 1764335004220,
+      "type": "error",
+      "message": "Manual queued error",
+      "url": "http://127.0.0.1:5500/test.html"
+    },
+    {
+      "ts": 1764335033235,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 1157,
+      "sessionId": "ri9h9i2"
+    },
+    {
+      "ts": 1764356548554,
+      "type": "init",
+      "url": "http://127.0.0.1:5500/test.html",
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+      "sessionId": "lpx6x8n"
+    },
+    {
+      "ts": 1764356549284,
+      "type": "performance",
+      "loadTime": 0,
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "lpx6x8n"
+    },
+    {
+      "ts": 1764356550557,
+      "type": "error",
+      "message": "Uncaught Error: Auto test error after 2s",
+      "filename": "http://127.0.0.1:5500/test.html",
+      "lineno": 50,
+      "colno": 24,
+      "stack": "Error: Auto test error after 2s\n    at http://127.0.0.1:5500/test.html:50:30",
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "lpx6x8n"
+    },
+    {
+      "ts": 1764356551557,
+      "type": "rejection",
+      "message": "Auto rejection after 3s",
+      "url": "http://127.0.0.1:5500/test.html",
+      "sessionId": "lpx6x8n"
+    },
+    {
+      "ts": 1764356551752,
+      "type": "network",
+      "url": "https://jsonplaceholder.typicode.com/todos/1",
+      "status": 200,
+      "duration": 694,
+      "sessionId": "lpx6x8n"
     }
   ]
 }

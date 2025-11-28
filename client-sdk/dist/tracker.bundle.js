@@ -7,7 +7,8 @@ export class Tracker {
     this.buffer = [];
     this.flushInterval = 3000;
     this.timer = null;
-    this.sessionId = Math.random().toString(36).slice(2,9);
+    this.sessionId = Math.random().toString(36).slice(2, 9);
+    this.originalFetch = window.fetch ? window.fetch.bind(window) : null;
   }
 
   start() {
@@ -19,13 +20,19 @@ export class Tracker {
       const reason = ev.reason || "unhandledrejection";
       this.queue({ type: "rejection", message: String(reason), stack: reason && reason.stack, url: location.href, ts: Date.now(), sessionId: this.sessionId });
     });
-    // wrap fetch
-    if (window.fetch) {
-      const orig = window.fetch.bind(window);
+    // Bug #5 Fix: wrap fetch with safeguard to prevent tracking our own endpoint
+    if (this.originalFetch) {
       window.fetch = async (...args) => {
+        const url = typeof args[0] === "string" ? args[0] : args[0].url;
+
+        // Don't track requests to our own ingestion endpoint (prevents infinite recursion)
+        if (url === this.endpoint) {
+          return this.originalFetch(...args);
+        }
+
         const start = performance.now();
         try {
-          const res = await orig(...args);
+          const res = await this.originalFetch(...args);
           const dur = Math.round(performance.now() - start);
           this.queue({ type: "network", url: (typeof args[0] === "string" ? args[0] : args[0].url), status: res.status, duration: dur, ts: Date.now(), sessionId: this.sessionId });
           return res;
@@ -43,7 +50,7 @@ export class Tracker {
         if (nav) {
           this.queue({ type: "performance", loadTime: Math.round(nav.loadEventEnd - nav.startTime), url: location.href, ts: Date.now(), sessionId: this.sessionId });
         }
-      } catch(e){}
+      } catch (e) { }
     });
 
     this.timer = setInterval(() => this.flush(), this.flushInterval);
@@ -61,12 +68,21 @@ export class Tracker {
     const payload = { apiKey: this.apiKey, events: this.buffer.splice(0, this.buffer.length), ts: Date.now() };
     const body = JSON.stringify(payload);
     try {
+      // Bug #4 Fix: Check sendBeacon return value and fallback to fetch on failure
       if (navigator.sendBeacon) {
-        navigator.sendBeacon(this.endpoint, body);
-      } else {
-        await fetch(this.endpoint, { method: "POST", headers: {"Content-Type":"application/json"}, body });
+        const blob = new Blob([body], { type: 'application/json' });
+        const success = navigator.sendBeacon(this.endpoint, blob);
+        if (!success) {
+          console.warn('Observify: sendBeacon failed, falling back to fetch');
+          // Fallback to fetch
+          if (this.originalFetch) {
+            await this.originalFetch(this.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body });
+          }
+        }
+      } else if (this.originalFetch) {
+        await this.originalFetch(this.endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body });
       }
-    } catch(err){
+    } catch (err) {
       console.warn("Observify flush failed", err);
     }
   }
